@@ -12,7 +12,7 @@ Use Python 3.12 from the repository root:
 python -m venv .venv
 source .venv/bin/activate
 # Windows PowerShell: .venv\Scripts\Activate.ps1
-python -m pip install -r requirements-demo.txt
+python -m pip install -r requirements.txt
 python -m pytest -q
 python -m scripts.train_discrete --preset highway_discrete_default --total_steps 128 --adjust_speed --run_dir quickstart
 ```
@@ -48,7 +48,7 @@ The context label `aggr` changes the reward-speed range; it does not implement a
 - `violation` logs the environment's collision flag. `near_miss` defaults to false and clearance may be unavailable; these columns must not be interpreted as validated measurements. Step collision rates differ from episode collision rates.
 - The validated path is single-environment discrete DQN on `highway-v0`. Continuous, batch, plotting, and evaluation scripts are retained for further development. The evaluation script does not replay the training-time adjustment callback and should not be used to claim an AS-on evaluation comparison. Continuous `merge-v0` is unsupported.
 
-See [validation and cleanup notes](docs/validation.md) for checks and changes. Historical instructions are retained in [the archived README](docs/legacy-readme.md) and `INSTRUCTIONS/`; they may describe functionality beyond the current implementation.
+See [validation and cleanup notes](docs/validation.md) for checks and changes. Historical instructions are retained in [the archived README](docs/legacy-readme.md) and `docs/archive/instructions/`. They are historical records, not current setup or implementation guidance. The Python presets in `scripts/presets.py` are the source of truth; `configs/*.json` are matching reference copies, not CLI-loaded configuration files.
 
 ## License
 

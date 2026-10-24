@@ -1,13 +1,2 @@
-# Tested with Python 3.12. Install CPU PyTorch separately if preferred.
-numpy==1.26.4
-scipy>=1.10,<2
-gymnasium==0.29.1
-highway-env==1.8.2
-stable-baselines3==2.3.2
-torch>=2.2,<3
-matplotlib>=3.7,<4
-pandas>=2,<3
-tensorboard>=2.14,<3
-tqdm>=4.65,<5
-rich>=13,<15
-pytest>=8,<10
+# Compatibility alias; requirements.txt is the canonical tested environment.
+-r requirements.txt

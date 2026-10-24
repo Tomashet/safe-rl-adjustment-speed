@@ -60,3 +60,17 @@ def test_training_updates_and_checkpoint_reload(tmp_path):
         assert 'violation' in info and 'ctx_id' in info
     finally:
         env.close()
+
+
+def test_json_configs_match_presets():
+    import json
+    from pathlib import Path
+    root = Path(__file__).resolve().parents[1]
+    configs = {p.stem: json.loads(p.read_text()) for p in (root / 'configs').glob('*.json')}
+    assert configs == PRESETS
+
+
+def test_continuous_merge_rejected():
+    import pytest
+    with pytest.raises(ValueError, match='discrete actions only'):
+        make_env('merge-v0', 0, 'continuous', 0.8, False, False, SafetyParams())

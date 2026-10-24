@@ -10,7 +10,7 @@ The first import commit preserves all 43 files from `Tomashet/ExpertV5-main`. Ev
 - Preserved the historical README in `docs/legacy-readme.md`.
 - Added a compatible demo dependency file without SB3 extras that pull unrelated Atari dependencies.
 - Fixed indentation in `scripts/run_all.py`; the batch export now remains inside `main`.
-- Removed unsupported `delta_nearmiss`, `d0`, and `h` constructor arguments from Python presets. These were not implemented by `SafetyParams`; removing them does not implement those mechanisms. Historical JSON configurations still need reconciliation before use.
+- Removed unsupported `delta_nearmiss`, `d0`, and `h` constructor arguments from Python presets. These were not implemented by `SafetyParams`; removing them does not implement those mechanisms. JSON reference copies now match the three supported Python presets; the unsupported continuous-merge configuration was removed.
 - Made `no_mpc` bypass the distance filter even when calibration is enabled. This corrects the ablation switch; it is a behavior change from the imported prototype.
 - Clarified filter comments: the IDLE/zero-control replacement is not verified braking or a safe fallback.
 
@@ -21,3 +21,13 @@ Environment: Python 3.12, CPU PyTorch, Gymnasium 0.29.1, highway-env 1.8.2, Stab
 `python -m pytest -q` exercises preset construction, the disabled-filter regression, known context-switch frequency, and a 96-step DQN run with actual optimizer updates and checkpoint save/reload.
 
 `python -m compileall -q src scripts tests` checks Python syntax. A 128-step preset CLI run checks logging and checkpoint output. These are execution checks, not evidence of safety improvements, convergence, or paper-result reproduction.
+
+## Consistency cleanup
+
+- `requirements.txt` is the canonical tested dependency list; `requirements-demo.txt` delegates to it.
+- Python presets are the configuration source of truth. JSON files are reference copies, verified against them by tests.
+- Batch scheduling no longer includes continuous merge; environment construction rejects that combination with a clear error.
+- Old instructions are under `docs/archive/instructions/` and explicitly labeled historical. The archived README is also labeled historical.
+- READ1 and its main README reference were removed in earlier cleanup commits.
+
+Consistency validation: all six tests passed locally, Python syntax checks passed, and all five batch entries reference supported Python presets. GitHub CI results are tracked separately in Actions.

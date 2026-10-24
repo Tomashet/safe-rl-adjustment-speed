@@ -44,7 +44,6 @@ def main():
         ("merge_discrete_default",   "discrete", "ppo", args.steps_discrete),
 
         ("highway_continuous_default", "continuous", "sac", args.steps_continuous),
-        ("merge_continuous_default",   "continuous", "sac", args.steps_continuous),
     ]
 
     ablations: List[Tuple[str, List[str]]] = [

@@ -1,3 +1,5 @@
+> **Historical archive — not current instructions.** This document predates the implementation review. Claims about forecasting, MPC, calibration, continuous support, and paper-grade results have not been established for this prototype. Follow the [current README](../README.md) for installation, supported usage, and limitations.
+
 # ExpertV5 — Safe Nonstationary Driving Experiments (SB3 + highway-env)
 
 This repository provides a **context-driven nonstationary training setup** for `highway-env`, with:

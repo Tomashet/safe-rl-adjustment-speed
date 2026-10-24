@@ -17,15 +17,12 @@
       "batch_size": 64,
       "gamma": 0.99,
       "gae_lambda": 0.95,
-      "ent_coef": 0.0
+      "ent_coef": 0
     }
   },
   "safety": {
     "horizon_n": 10,
-    "epsilon": 0.5,
-    "delta_nearmiss": 1.0,
-    "d0": 2.0,
-    "h": 1.2
+    "epsilon": 0.5
   },
   "nonstationarity": {
     "p_stay": 0.8

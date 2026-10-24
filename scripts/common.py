@@ -36,6 +36,9 @@ def make_env(
 ) -> Tuple[gym.Env, Optional[Any], Optional[Any]]:
     env_id = _normalize_env_id(env_id)
 
+    if env_id == "merge-v0" and action_space_type.lower() == "continuous":
+        raise ValueError("merge-v0 supports discrete actions only in this project.")
+
     # 1) Base env
     env = gym.make(env_id, render_mode=None, disable_env_checker=True)
 

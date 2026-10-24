@@ -65,10 +65,10 @@ class ConformalCalibrator:
 
 class MPCLikeSafetyShield:
     """
-    Simple MPC-style safety shield.
+    Heuristic clearance filter (no MPC optimization or safety guarantee).
 
-    The shield filters unsafe actions by checking
-    predicted clearance and collision risk.
+    The filter checks current Euclidean inter-vehicle distance.
+    The replacement action is a heuristic, not a verified safe fallback.
 
     Compatible with SafetyShieldWrapper.
     """
@@ -105,6 +105,10 @@ class MPCLikeSafetyShield:
             safe_action
             metadata dict
         """
+
+        if self.no_mpc:
+            return action, {"shield_used": False, "shield_reason": "disabled",
+                            "eps": self.params.epsilon, "inflate": 0.0}
 
         # base epsilon
         eps = self.params.epsilon
@@ -153,9 +157,9 @@ class MPCLikeSafetyShield:
                 shield_used = True
                 reason = "clearance_violation"
 
-                # override action with braking / safe control
+                # heuristic replacement; neither action guarantees collision avoidance
                 if self.action_space_type == "discrete":
-                    safe_action = 1  # typically IDLE or slow action
+                    safe_action = 1  # highway-env DiscreteMetaAction: IDLE
                 else:
                     safe_action = np.zeros_like(action)
 

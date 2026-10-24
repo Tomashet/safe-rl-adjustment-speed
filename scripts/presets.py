@@ -44,9 +44,6 @@ PRESETS: Dict[str, Dict[str, Any]] = {
         "safety": {
             "horizon_n": 10,
             "epsilon": 0.5,
-            "delta_nearmiss": 1.0,
-            "d0": 2.0,
-            "h": 1.2,
         },
         "nonstationarity": {
             "p_stay": 0.8,
@@ -81,9 +78,6 @@ PRESETS: Dict[str, Dict[str, Any]] = {
         "safety": {
             "horizon_n": 10,
             "epsilon": 0.7,
-            "delta_nearmiss": 1.2,
-            "d0": 2.2,
-            "h": 1.3,
         },
         "nonstationarity": {
             "p_stay": 0.85,
@@ -110,9 +104,6 @@ PRESETS: Dict[str, Dict[str, Any]] = {
         "safety": {
             "horizon_n": 10,
             "epsilon": 0.5,
-            "delta_nearmiss": 1.0,
-            "d0": 2.0,
-            "h": 1.2,
         },
         "nonstationarity": {
             "p_stay": 0.8,

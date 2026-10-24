@@ -103,17 +103,18 @@ def main():
     )
 
 
-# Paper-friendly split tables (discrete vs continuous), ordered nicely
-run([
-    "python", "-m", "scripts.export_paper_tables",
-    "--pattern", "runs/*_seed*",
-    "--out_dir", "paper_tables",
-    "--label_prefix", "tab:paper",
-    "--caption_prefix", "Results under episodic nonstationarity.",
-    "--split_by_env",
-])
+    # Paper-friendly split tables (discrete vs continuous), ordered nicely
+    run([
+        "python", "-m", "scripts.export_paper_tables",
+        "--pattern", "runs/*_seed*",
+        "--out_dir", "paper_tables",
+        "--label_prefix", "tab:paper",
+        "--caption_prefix", "Results under episodic nonstationarity.",
+        "--split_by_env",
+    ])
 
     print("Wrote LaTeX tables to paper_tables/")
 
 if __name__ == "__main__":
     main()
+
